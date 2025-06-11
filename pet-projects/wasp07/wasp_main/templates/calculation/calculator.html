@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Water Properties Calculator</h1>
+    <p>Select a calculation type:</p>
+    <ul>
+        <li><a href="{% url 'hs_diagram' %}">HS Diagram Calculation</a></li>
+        <li><a href="{% url 'saturation_line' %}">Saturation Line Calculation</a></li>
+    </ul>
+{% endblock %}

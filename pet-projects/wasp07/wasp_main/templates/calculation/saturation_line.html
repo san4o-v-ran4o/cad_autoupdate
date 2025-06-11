@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Saturation Line Calculator</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Input Type:</label>
+        <select name="input_type">
+            <option value="pressure">Pressure (MPa)</option>
+            <option value="temperature">Temperature (°C)</option>
+        </select><br>
+        <label>Value:</label><input type="number" step="0.01" name="value" required><br>
+        <button type="submit">Calculate</button>
+    </form>
+    {% if results_water %}
+        <h2>Water Properties</h2>
+        <p>Pressure: {{ results_water.pressure }} MPa</p>
+        <p>Temperature: {{ results_water.temperature }} °C</p>
+        <p>Enthalpy: {{ results_water.enthalpy }} kJ/kg</p>
+        <p>Entropy: {{ results_water.entropy }} kJ/(kg·K)</p>
+        <p>Specific Volume: {{ results_water.specific_volume }} m³/kg</p>
+        <p>Density: {{ results_water.density }} kg/m³</p>
+        <p>Dynamic Viscosity: {{ results_water.dynamic_viscosity }} Pa·s</p>
+        <p>Kinematic Viscosity: {{ results_water.kinematic_viscosity }} m²/s</p>
+    {% endif %}
+    {% if results_steam %}
+        <h2>Steam Properties</h2>
+        <p>Pressure: {{ results_steam.pressure }} MPa</p>
+        <p>Temperature: {{ results_steam.temperature }} °C</p>
+        <p>Enthalpy: {{ results_steam.enthalpy }} kJ/kg</p>
+        <p>Entropy: {{ results_steam.entropy }} kJ/(kg·K)</p>
+        <p>Specific Volume: {{ results_steam.specific_volume }} m³/kg</p>
+        <p>Density: {{ results_steam.density }} kg/m³</p>
+        <p>Dynamic Viscosity: {{ results_steam.dynamic_viscosity }} Pa·s</p>
+        <p>Kinematic Viscosity: {{ results_steam.kinematic_viscosity }} m²/s</p>
+    {% endif %}
+{% endblock %}
